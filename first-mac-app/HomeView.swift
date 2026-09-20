@@ -93,16 +93,21 @@ struct HomeView: View {
                             case .profile:
                                   //Text("profile...")
                                   ProfileView()
+                            
                             case .users:
                                   //Text("users...")
-                            UsersView(selectedUser: $selectedUser)
+                                  
+                                   UsersView(selectedUser: $selectedUser)
+                                   
                             
                             case .posts:
+                                  
                                   PostsView(selectedPost: $selectedPost)
                             
                             case .todos:
                                   //Text("todos...")
                                   // 2. Pass the binding down to TodosView
+                                    
                                   TodosView(selectedTodo: $selectedTodo)
                         }
                     }
@@ -301,6 +306,25 @@ struct HomeView: View {
                 }
             .padding()
             .navigationTitle("Home")
+            // 👈 Add these mutual exclusivity rules:
+            .onChange(of: selectedTodo) { newValue in
+                if newValue != nil {
+                    selectedUser = nil
+                    selectedPost = nil // Clear others when a todo is selected
+                }
+            }
+            .onChange(of: selectedUser) { newValue in
+                if newValue != nil {
+                    selectedTodo = nil
+                    selectedPost = nil // Clear others when a user is selected
+                }
+            }
+            .onChange(of: selectedPost) { newValue in
+                if newValue != nil {
+                    selectedTodo = nil
+                    selectedUser = nil // Clear others when a post is selected
+                }
+            }
         
     }
 }
