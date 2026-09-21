@@ -15,6 +15,8 @@ enum HomeTabs: String, CaseIterable {
     case todos = "Todos"
     case notes = "Notes"
     case DnD = "DragDrop"
+    case musics = "Musics"
+    case videos = "Videos"
     
     
     var icon: String {
@@ -25,6 +27,8 @@ enum HomeTabs: String, CaseIterable {
             case .todos: return "checkmark.circle.fill"
             case .notes: return "doc.plaintext.fill"
             case .DnD: return "checkmark.circle.fill"
+            case .musics: return "checkmark.circle.fill"
+            case .videos: return "checkmark.circle.fill"
         }
     }
 }
@@ -33,7 +37,7 @@ enum HomeTabs: String, CaseIterable {
 struct HomeView: View {
     @AppStorage("isAuth") private var isAuth: Bool = false
     
-    @State private var selectedTab: HomeTabs = .users
+    @State private var selectedTab: HomeTabs = .profile
     
     // 1. Track the selected todo state here
     @State private var selectedTodo: Todo? = nil
@@ -95,6 +99,7 @@ struct HomeView: View {
             // center
                     VStack{
                         switch selectedTab {
+                           
                             
                             case .DnD:
                                   DragDropView()
@@ -114,6 +119,13 @@ struct HomeView: View {
                             case .todos:
                                   // 2. Pass the binding down to TodosView
                                   TodosView(selectedTodo: $selectedTodo)
+                            
+                            case .musics:
+                                  MusicsView()
+                            
+                            case .videos:
+                                  VideosView()
+                       
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
