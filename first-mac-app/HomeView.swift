@@ -13,6 +13,8 @@ enum HomeTabs: String, CaseIterable {
     case users = "Users"
     case posts = "Posts"
     case todos = "Todos"
+    case notes = "Notes"
+    case DnD = "DragDrop"
     
     
     var icon: String {
@@ -21,6 +23,8 @@ enum HomeTabs: String, CaseIterable {
             case .users: return "person.2.fill"
             case .posts: return "doc.plaintext.fill"
             case .todos: return "checkmark.circle.fill"
+            case .notes: return "doc.plaintext.fill"
+            case .DnD: return "checkmark.circle.fill"
         }
     }
 }
@@ -35,6 +39,7 @@ struct HomeView: View {
     @State private var selectedTodo: Todo? = nil
     @State private var selectedUser: User? = nil
     @State private var selectedPost: Post? = nil
+    @State private var selectedNote: Note? = nil
     
     @StateObject private var commentsViewModel = CommentsViewModel()
     
@@ -90,24 +95,24 @@ struct HomeView: View {
             // center
                     VStack{
                         switch selectedTab {
+                            
+                            case .DnD:
+                                  DragDropView()
+                            
+                            case .notes:
+                                  NotesView(selectedNote: $selectedNote)
+                            
                             case .profile:
-                                  //Text("profile...")
                                   ProfileView()
                             
                             case .users:
-                                  //Text("users...")
-                                  
                                    UsersView(selectedUser: $selectedUser)
-                                   
-                            
+                                 
                             case .posts:
-                                  
                                   PostsView(selectedPost: $selectedPost)
                             
                             case .todos:
-                                  //Text("todos...")
                                   // 2. Pass the binding down to TodosView
-                                    
                                   TodosView(selectedTodo: $selectedTodo)
                         }
                     }
@@ -120,9 +125,28 @@ struct HomeView: View {
                         Text("Right")
                             .font(.headline)
                             .padding(.top)
-                        Spacer()
+                        //Spacer()
                         // 3. Conditionally display selected todo or fallback text
-                        if let todo = selectedTodo {
+                        if let note = selectedNote {
+                           VStack(alignment: .leading, spacing: 8) {
+                              
+                               
+                               Text("ID: \(note.id)")
+                                   .font(.caption2)
+                                   .foregroundStyle(.secondary)
+                               
+                               Text(note.title)
+                                   .font(.subheadline)
+                                   .multilineTextAlignment(.leading)
+                               
+                               
+                               Text(note.body)
+                                   .font(.subheadline)
+                                   .multilineTextAlignment(.leading)
+                              
+                           }
+                           .padding(.top, 4)
+                       } else if let todo = selectedTodo {
                             VStack(alignment: .leading, spacing: 8) {
                                 Image(systemName: todo.completed ? "checkmark.circle.fill" : "circle")
                                     .font(.largeTitle)
@@ -308,22 +332,16 @@ struct HomeView: View {
             .navigationTitle("Home")
             // 👈 Add these mutual exclusivity rules:
             .onChange(of: selectedTodo) { newValue in
-                if newValue != nil {
-                    selectedUser = nil
-                    selectedPost = nil // Clear others when a todo is selected
-                }
+                if newValue != nil { selectedUser = nil; selectedPost = nil; selectedNote = nil }
             }
             .onChange(of: selectedUser) { newValue in
-                if newValue != nil {
-                    selectedTodo = nil
-                    selectedPost = nil // Clear others when a user is selected
-                }
+                if newValue != nil { selectedTodo = nil; selectedPost = nil; selectedNote = nil }
             }
             .onChange(of: selectedPost) { newValue in
-                if newValue != nil {
-                    selectedTodo = nil
-                    selectedUser = nil // Clear others when a post is selected
-                }
+                if newValue != nil { selectedTodo = nil; selectedUser = nil; selectedNote = nil }
+            }
+            .onChange(of: selectedNote) { newValue in
+                if newValue != nil { selectedTodo = nil; selectedUser = nil; selectedPost = nil }
             }
         
     }
