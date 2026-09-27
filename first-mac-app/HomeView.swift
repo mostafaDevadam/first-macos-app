@@ -17,6 +17,8 @@ enum HomeTabs: String, CaseIterable {
     case DnD = "DragDrop"
     case musics = "Musics"
     case videos = "Videos"
+    case chart = "Chart"
+    
     
     
     var icon: String {
@@ -29,6 +31,9 @@ enum HomeTabs: String, CaseIterable {
             case .DnD: return "checkmark.circle.fill"
             case .musics: return "checkmark.circle.fill"
             case .videos: return "checkmark.circle.fill"
+            case .chart: return "checkmark.circle.fill"
+            
+            
         }
     }
 }
@@ -125,7 +130,19 @@ struct HomeView: View {
                             
                             case .videos:
                                   VideosView()
+                            
+                           
+                            
+                           
                        
+                            case .chart:
+                                SimpleChartView()
+                            
+                               
+                            
+                        
+                            
+                               
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
