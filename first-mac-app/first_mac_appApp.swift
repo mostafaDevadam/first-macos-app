@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct first_mac_appApp: App {
+    
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(isDarkMode ? .dark : .light)
         }
     }
 }

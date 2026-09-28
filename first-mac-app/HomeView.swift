@@ -18,6 +18,7 @@ enum HomeTabs: String, CaseIterable {
     case musics = "Musics"
     case videos = "Videos"
     case chart = "Chart"
+    case settings = "Settings"
     
     
     
@@ -32,6 +33,7 @@ enum HomeTabs: String, CaseIterable {
             case .musics: return "checkmark.circle.fill"
             case .videos: return "checkmark.circle.fill"
             case .chart: return "checkmark.circle.fill"
+            case .settings : return "checkmark.circle.fill"
             
             
         }
@@ -137,6 +139,12 @@ struct HomeView: View {
                        
                             case .chart:
                                 SimpleChartView()
+                            
+                            case .settings:
+                                SettingsView()
+                            
+                            //else:
+                               // Text("asd")
                             
                                
                             

@@ -20,6 +20,7 @@
 		06635B8D305DA1FE000E4A86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06635B8C305DA1FE000E4A86 /* LoginView.swift */; };
 		06635B8F305DA3C9000E4A86 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06635B8E305DA3C9000E4A86 /* HomeView.swift */; };
 		06635B91305DA4B6000E4A86 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06635B90305DA4B6000E4A86 /* AppView.swift */; };
+		066A3EC4306A80E300E2931B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066A3EC3306A80E100E2931B /* SettingsView.swift */; };
 		067934113069284F000479A9 /* SimpleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067934103069284F000479A9 /* SimpleChartView.swift */; };
 		067934133069357D000479A9 /* SimpleProfileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067934123069357D000479A9 /* SimpleProfileMap.swift */; };
 		068D5985305E1E7600D17218 /* todos.json in Resources */ = {isa = PBXBuildFile; fileRef = 068D5984305E1E7600D17218 /* todos.json */; };
@@ -51,6 +52,7 @@
 		06635B8C305DA1FE000E4A86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		06635B8E305DA3C9000E4A86 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		06635B90305DA4B6000E4A86 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		066A3EC3306A80E100E2931B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		067934103069284F000479A9 /* SimpleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleChartView.swift; sourceTree = "<group>"; };
 		067934123069357D000479A9 /* SimpleProfileMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SimpleProfileMap.swift; path = ../../../SimpleProfileMap.swift; sourceTree = "<group>"; };
 		068D5984305E1E7600D17218 /* todos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = todos.json; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		065AD567304D2E410098F6F3 /* first-mac-app */ = {
 			isa = PBXGroup;
 			children = (
+				066A3EC3306A80E100E2931B /* SettingsView.swift */,
 				065AD568304D2E410098F6F3 /* first_mac_appApp.swift */,
 				065AD56A304D2E410098F6F3 /* ContentView.swift */,
 				06635B90305DA4B6000E4A86 /* AppView.swift */,
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				066A3EC4306A80E300E2931B /* SettingsView.swift in Sources */,
 				061C77473060D74B005F457D /* NotesView.swift in Sources */,
 				06EFD52A305E47B7005619E7 /* CommentsViewModel.swift in Sources */,
 				061C774F3060F182005F457D /* VideosView.swift in Sources */,
