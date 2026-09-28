@@ -9,7 +9,7 @@ import SwiftUI
 
 
 enum HomeTabs: String, CaseIterable {
-    case profile = "Profile"
+    case profile = "profile"
     case users = "Users"
     case posts = "Posts"
     case todos = "Todos"
@@ -19,6 +19,22 @@ enum HomeTabs: String, CaseIterable {
     case videos = "Videos"
     case chart = "Chart"
     case settings = "Settings"
+    
+    
+    var localizedTitle: LocalizedStringKey {
+           switch self {
+           case .profile: return "tab_profile"
+           case .users: return "tab_users"
+           case .posts: return "tab_posts"
+           case .todos: return "tab_todos"
+           case .notes: return "tab_notes"
+           case .DnD: return "tab_drag_drop"
+           case .musics: return "tab_musics"
+           case .videos: return "tab_videos"
+           case .chart: return "tab_chart"
+           case .settings: return "tab_settings"
+           }
+       }
     
     
     
@@ -43,6 +59,8 @@ enum HomeTabs: String, CaseIterable {
 
 struct HomeView: View {
     @AppStorage("isAuth") private var isAuth: Bool = false
+    
+    @Environment(\.layoutDirection) private var layoutDirection
     
     @State private var selectedTab: HomeTabs = .profile
     
@@ -76,7 +94,7 @@ struct HomeView: View {
                     }) {
                         HStack {
                             Image(systemName: tab.icon)
-                            Text(tab.rawValue)
+                            Text(tab.localizedTitle)
                         }
                         .padding(20)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -154,6 +172,7 @@ struct HomeView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .environment(\.layoutDirection, layoutDirection)
             
             Divider()
             
@@ -380,6 +399,7 @@ struct HomeView: View {
             .onChange(of: selectedNote) { newValue in
                 if newValue != nil { selectedTodo = nil; selectedUser = nil; selectedPost = nil }
             }
+            
         
     }
 }
